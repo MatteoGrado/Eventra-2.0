@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: User-Service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:3307/eventra-user}
+    username: ${SPRING_DATASOURCE_USERNAME:Admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:Sumafelo!}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    open-in-view: false
+
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: ${SPRING_KAFKA_CONSUMER_GROUP_ID:user-service}
+      auto-offset-reset: earliest
+
+  cloud:
+    consul:
+      host: ${SPRING_CLOUD_CONSUL_HOST:localhost}
+      port: ${SPRING_CLOUD_CONSUL_PORT:8500}
+      discovery:
+        service-name: ${SPRING_CLOUD_CONSUL_DISCOVERY_SERVICE_NAME:${spring.application.name}}
+        register: true
+        prefer-ip-address: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
