@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/index/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <img th:src="@{/images/logo-evntra2-0.png}" class="site-logo" alt="Logo of the Website.">
+    <h1 class="main-header">
+        <a th:href="@{/}">Eventa-2.0</a>
+    </h1>
+    <ol class="link-list">
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Event History</a></li>
+        <li><a href="#">Veranstalter</a></li>
+        <li><a href="#">Workshops</a></li>
+        <li><a href="#">Kontakt</a></li>
+    </ol>
+    <button class="login-btn" type="submit">
+        <a th:href="@{/login}">Login</a>
+    </button>
+</nav>
+<div class="main-image">
+    <img th:src="@{/images/main-image.png}" class="main-image-photo" alt="Main image of the webpage.">
+    <div class="hero-content">
+        <h2 class="on-image-header">
+            Discover<br>
+            Learn<br>
+            Experience
+        </h2>
+        <div class="search-container">
+        <form th:action="@{/events/search}" th:object="${searchForm}" method="POST" class="search-form">
+            <div class="search-field search-field-keyword">
+                <svg class="search-icon"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m20 20-4-4"></path>
+                </svg>
+                <input type="text" th:field="*{search}" placeholder="Wonach suchen Sie?" autocomplete="off">
+            </div>
+            <div class="search-field search-field-location">
+                <svg class="location-icon"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+                <input type="text" th:field="*{location}" placeholder="Ihr Standort (Optional)" autocomplete="off">
+            </div>
+            <button type="submit" class="search-button">
+                Search
+            </button>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="current-event-list">
+    <h3 class="evnt-list-header">Folgende Events stehen an</h3>
+    <div class="section-divider" aria-hidden="true"></div>
+    <div class="search-result-notice" th:if="${searchSubmitted and searchResultCount > 0}" role="status">
+        <span class="search-result-icon" aria-hidden="true">✓</span>
+        <span><strong th:text="${searchResultCount}">1</strong> passende Events gefunden</span>
+    </div>
+    <div class="search-result-notice search-result-notice-empty" th:if="${searchSubmitted and searchResultCount == 0}" role="status">
+        Keine passenden Events gefunden. Hier sind weitere Events für Sie.
+    </div>
+    <div class="event" th:each="event : ${eventList}">
+        <div class="event-card-content">
+            <div class="event-card-heading">
+                <span class="event-label">Event</span>
+                <h4 class="event-name" th:text="${event.eventName}">
+                    Event Name
+                </h4>
+            </div>
+            <p class="event-description" th:text="${event.eventDescription}">
+                Event Beschreibung
+            </p>
+            <div class="event-details">
+                <p class="event-detail event-date">
+                    <svg class="event-detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+                        <path d="M16 2v4M8 2v4M3 10h18"></path>
+                        <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path>
+                    </svg>
+                    <span th:text="${event.eventDate}">Event Datum</span>
+                </p>
+                <p class="event-detail event-location">
+                    <svg class="event-detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                        <circle cx="12" cy="10" r="2.5"></circle>
+                    </svg>
+                    <span th:text="${event.location}">Event Ort</span>
+                </p>
+            </div>
+        </div>
+        <div class="event-card-arrow" aria-hidden="true">→</div>
+    </div>
+</div>
+<footer class="footer">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const query = document.querySelector('.search-field-keyword input')?.value?.trim();
+        if (!query) return;
+
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const matcher = new RegExp('(' + escapedQuery + ')', 'gi');
+        const searchableFields = document.querySelectorAll('.event-name, .event-description, .event-location span');
+
+        searchableFields.forEach(function (field) {
+            const text = field.textContent;
+            if (matcher.test(text)) {
+                const parts = text.split(matcher);
+                field.replaceChildren();
+                parts.forEach(function (part, index) {
+                    if (index % 2 === 1) {
+                        const match = document.createElement('mark');
+                        match.className = 'search-match';
+                        match.textContent = part;
+                        field.appendChild(match);
+                    } else {
+                        field.appendChild(document.createTextNode(part));
+                    }
+                });
+            }
+            matcher.lastIndex = 0;
+        });
+    });
+</script>
+</body>
+</html>
