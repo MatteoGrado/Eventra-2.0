@@ -38,6 +38,23 @@ body {
     box-shadow: 0 6px 18px rgba(38, 57, 54, 0.08);
 }
 
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 64px;
+    margin-top: 32px;
+    padding: 14px 24px;
+    background-color: #000;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .main-image {
     position: relative;
     overflow: hidden;

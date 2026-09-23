@@ -71,15 +71,25 @@
 <div class="current-event-list">
     <h3 class="evnt-list-header">Folgende Events stehen an</h3>
     <div class="section-divider" aria-hidden="true"></div>
-    <div class="event">
-        <h4 class="event-name"></h4>
-        <p class="event-discription"></p>
-        <p class="event-date"></p>
-        <p class="event-location"></p>
+    <div class="event" th:each="event : ${eventList}">
+        <h4 class="event-name" th:text="${event.eventName}">
+            Event Name
+        </h4>
+        <p class="event-description" th:text="${event.eventDescription}">
+            Event Beschreibung
+        </p>
+        <p class="event-date" th:text="${event.eventDate}">
+            Event Datum
+        </p>
+        <p class="event-location" th:text="${event.location}">
+            Event Ort
+        </p>
     </div>
 </div>
-<div class="footer">f
-
-</div>
+<footer class="footer">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+</footer>
 </body>
 </html>

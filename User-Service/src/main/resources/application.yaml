@@ -4,20 +4,30 @@ spring:
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:3307/eventra-user}
-    username: ${SPRING_DATASOURCE_USERNAME:Admin}
-    password: ${SPRING_DATASOURCE_PASSWORD:Sumafelo!}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    defer-datasource-initialization: true
     open-in-view: false
+
+  sql:
+    init:
+      mode: always
 
   kafka:
     bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: ${SPRING_KAFKA_CONSUMER_GROUP_ID:user-service}
       auto-offset-reset: earliest
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
 
   cloud:
     consul:

@@ -78,6 +78,8 @@ services:
         condition: service_healthy
       kafka:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     env_file:
       - .env
     environment:
@@ -86,6 +88,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-eventra}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
       SPRING_CLOUD_CONSUL_HOST: consul
       SPRING_CLOUD_CONSUL_PORT: 8500
     ports:
@@ -95,11 +99,11 @@ services:
     image: postgres:17
     container_name: postgresql
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-eventra}
-      POSTGRES_USER: ${POSTGRES_USER:-eventra}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eventra}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "${POSTGRES_HOST_PORT:-3307}:${POSTGRES_PORT:-5432}"
+      - "3306:5432"
     volumes:
       - postgresql-data:/var/lib/postgresql/data
     healthcheck:
