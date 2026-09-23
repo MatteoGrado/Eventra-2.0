@@ -4,6 +4,7 @@ import de.grado.userservice.forms.SearchBarForm;
 import de.grado.userservice.model.Event;
 import de.grado.userservice.service.EventCacheService;
 import de.grado.userservice.service.EventService;
+import de.grado.userservice.service.OrganizerCacheService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class DefaultController
 {
     private final EventCacheService eventCacheService;
     private final EventService eventService;
+    private final OrganizerCacheService organizerCacheService;
 
     @GetMapping("/")
     public String index(Model model)
@@ -51,5 +53,19 @@ public class DefaultController
             redirectAttributes.addFlashAttribute("eventList", eventCacheService.getEvents());
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/events")
+    public String events(Model model)
+    {
+        model.addAttribute("eventList", eventCacheService.getEvents());
+        return "events";
+    }
+
+    @GetMapping("/organizer")
+    public String organizer(Model model)
+    {
+        model.addAttribute("organizerList", organizerCacheService.getOrganizers());
+        return "organizer";
     }
 }
