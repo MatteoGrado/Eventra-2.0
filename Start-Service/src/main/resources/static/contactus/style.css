@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+
+body { min-height: 100vh; margin: 0; background: #f8faf9; font-family: Arial, sans-serif; color: #263936; }
+
+.navbar { display: flex; align-items: center; position: relative; width: 100%; min-height: 64px; padding: 10px 24px; background-color: #000; color: #fff; }
+.site-logo { display: block; max-width: 56px; max-height: 44px; object-fit: contain; }
+.main-header { margin: 0 28px 0 16px; font-size: 1.5rem; }
+.main-header a, .link-list a { color: #fff; text-decoration: none; }
+.link-list { display: flex; align-items: center; gap: 24px; position: absolute; left: 50%; transform: translateX(-50%); margin: 0; padding: 0; list-style: none; }
+.link-list li { margin: 0; }
+.link-list a:hover, .link-list a[aria-current="page"] { color: #ffeb3b; }
+.login-btn { margin-left: auto; padding: 10px 18px; border: 1px solid #1478e8; border-radius: 4px; background-color: #1478e8; color: #fff; font: inherit; cursor: pointer; }
+.login-btn a { color: #fff; text-decoration: none; }
+.login-btn:hover { background-color: #0d5fba; border-color: #0d5fba; }
+
+.contact-page { max-width: 1180px; margin: 0 auto; padding: 58px 32px 80px; }
+.contact-hero { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 44px 48px; overflow: hidden; border-radius: 24px; background: #263936; color: #fff; box-shadow: 0 16px 32px rgba(38, 57, 54, .14); }
+.contact-hero > div:first-child { max-width: 680px; }
+.eyebrow { display: inline-block; margin-bottom: 14px; color: #ffeb3b; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.contact-hero h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.35rem); line-height: 1.05; }
+.contact-hero p { max-width: 590px; margin: 20px 0 0; color: #d6e2df; line-height: 1.65; }
+.hero-mark { display: grid; width: 142px; height: 142px; flex: 0 0 auto; place-items: center; border: 1px solid rgba(255, 235, 59, .45); border-radius: 50%; transform: rotate(12deg); color: #ffeb3b; font-size: 4.5rem; }
+.section-heading { margin: 54px 0 20px; }
+.dark-eyebrow { margin-bottom: 8px; color: #1478e8; }
+.section-heading h3 { margin: 0; font-size: clamp(1.45rem, 2.5vw, 1.9rem); }
+.contact-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 20px; }
+.contact-card { min-height: 265px; padding: 26px; border: 1px solid #e1e9e6; border-radius: 18px; background: #fff; box-shadow: 0 10px 26px rgba(38, 57, 54, .07); transition: transform .2s ease, box-shadow .2s ease; }
+.contact-card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px rgba(38, 57, 54, .13); }
+.contact-card-featured { background: #ffeb3b; border-color: #f0d45b; }
+.card-icon { display: grid; width: 48px; height: 48px; margin-bottom: 22px; place-items: center; border-radius: 14px; background: #263936; color: #ffeb3b; font-size: 1.5rem; font-weight: 700; }
+.card-label { display: block; margin-bottom: 8px; color: #70817d; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.contact-card h4 { margin: 0 0 12px; font-size: 1.25rem; }
+.contact-link { color: #1478e8; font-size: 1.02rem; font-weight: 700; text-decoration: none; }
+.contact-link:hover { text-decoration: underline; }
+.contact-card p { margin: 14px 0 0; color: #61706d; line-height: 1.6; }
+.contact-value { margin-top: 0 !important; }
+.footer { display: flex; align-items: center; justify-content: space-evenly; min-height: 64px; padding: 14px 24px; background: #000; color: #fff; font-size: .9rem; }
+.footer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 850px) { .contact-grid { grid-template-columns: 1fr 1fr; } .contact-card-featured { grid-column: 1 / -1; min-height: 220px; } }
+@media (max-width: 600px) {
+    .navbar { flex-wrap: wrap; gap: 12px; padding: 10px 16px; }
+    .main-header { margin-right: auto; }
+    .link-list { position: static; transform: none; order: 3; width: 100%; justify-content: center; gap: 16px; font-size: .9rem; }
+    .contact-page { padding: 38px 16px 64px; }
+    .contact-hero { align-items: flex-start; padding: 30px 24px; }
+    .hero-mark { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-card-featured { grid-column: auto; }
+    .footer { flex-wrap: wrap; gap: 12px 22px; justify-content: center; }
+}

@@ -6,12 +6,12 @@ import de.grado.userservice.service.EventCacheService;
 import de.grado.userservice.service.EventService;
 import de.grado.userservice.service.OrganizerCacheService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -67,5 +67,11 @@ public class DefaultController
     {
         model.addAttribute("organizerList", organizerCacheService.getOrganizers());
         return "organizer";
+    }
+
+    @GetMapping("/contactus")
+    public String contact()
+    {
+        return "contactus";
     }
 }

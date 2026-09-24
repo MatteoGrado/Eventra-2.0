@@ -68,11 +68,11 @@ services:
       timeout: 5s
       retries: 20
 
-  user-service:
+  start-service:
     build:
-      context: ./User-Service
+      context: ./Start-Service
     depends_on:
-      postgresql-user:
+      postgresql-start:
         condition: service_healthy
       consul:
         condition: service_healthy
@@ -83,7 +83,7 @@ services:
     env_file:
       - .env
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-user:5432/${POSTGRES_DB:-eventra}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-start:5432/${POSTGRES_DB:-eventra}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-eventra}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-eventra}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
@@ -95,7 +95,7 @@ services:
     ports:
       - "8081:8080"
 
-  postgresql-user:
+  postgresql-start:
     image: postgres:17
     container_name: postgresql
     environment:

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kontakt | Eventra-2.0</title>
+    <link rel="stylesheet" th:href="@{/contactus/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <img th:src="@{/images/logo-evntra2-0.png}" class="site-logo" alt="Eventra-2.0 Logo">
+    <h1 class="main-header">
+        <a th:href="@{/}">Eventa-2.0</a>
+    </h1>
+    <ol class="link-list">
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/organizer}">Veranstalter</a></li>
+        <li><a href="#">Workshops</a></li>
+        <li><a th:href="@{/contactus}" aria-current="page">Kontakt</a></li>
+    </ol>
+    <button class="login-btn" type="button">
+        <a th:href="@{/login}">Login</a>
+    </button>
+</nav>
+
+<main class="contact-page">
+    <section class="contact-hero">
+        <div>
+            <span class="eyebrow">Eventra-2.0 · Kontakt</span>
+            <h2>Wir freuen uns<br>von Ihnen zu hören.</h2>
+            <p>Sie haben Fragen zu Events, Veranstaltern oder unserer Plattform? Schreiben Sie uns direkt – unser Team hilft gerne weiter.</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true">@</div>
+    </section>
+
+    <section class="contact-content" aria-labelledby="contact-heading">
+        <div class="section-heading">
+            <span class="eyebrow dark-eyebrow">Direkter Draht</span>
+            <h3 id="contact-heading">Kontakt &amp; Unternehmensangaben</h3>
+        </div>
+
+        <div class="contact-grid">
+            <article class="contact-card contact-card-featured">
+                <span class="card-icon" aria-hidden="true">@</span>
+                <span class="card-label">E-Mail</span>
+                <h4>Schreiben Sie uns</h4>
+                <a class="contact-link" href="mailto:kontakt@eventra.de">kontakt@eventra.de</a>
+                <p>Wir melden uns schnellstmöglich bei Ihnen zurück.</p>
+            </article>
+
+            <article class="contact-card">
+                <span class="card-icon" aria-hidden="true">⌂</span>
+                <span class="card-label">Anschrift</span>
+                <h4>Eventra-2.0 GmbH</h4>
+                <p class="contact-value">Musterstraße 12<br>10115 Berlin<br>Deutschland</p>
+            </article>
+
+            <article class="contact-card">
+                <span class="card-icon" aria-hidden="true">§</span>
+                <span class="card-label">Registerangaben</span>
+                <h4>Rechtliche Informationen</h4>
+                <p class="contact-value">Amtsgericht Berlin-Charlottenburg<br>HRB 123456 B<br>USt-IdNr. DE123456789</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <span>© 2024 Eventra-2.0</span>
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+</footer>
+</body>
+</html>
