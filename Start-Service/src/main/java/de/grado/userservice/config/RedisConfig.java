@@ -1,6 +1,7 @@
 package de.grado.userservice.config;
 
 import de.grado.userservice.model.Event;
+import de.grado.userservice.model.Organizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -17,6 +18,22 @@ public class RedisConfig
     RedisTemplate<String, List<Event>> redisTemplate(RedisConnectionFactory connectionFactory)
     {
         RedisTemplate<String, List<Event>> template = new RedisTemplate<>();
+        StringRedisSerializer stringSerializer = new StringRedisSerializer();
+        RedisSerializer<Object> jsonSerializer = RedisSerializer.json();
+
+        template.setConnectionFactory(connectionFactory);
+        template.setKeySerializer(stringSerializer);
+        template.setHashKeySerializer(stringSerializer);
+        template.setValueSerializer(jsonSerializer);
+        template.setHashValueSerializer(jsonSerializer);
+        template.afterPropertiesSet();
+        return template;
+    }
+
+    @Bean
+    RedisTemplate<String, List<Organizer>> organizerRedisTemplate(RedisConnectionFactory connectionFactory)
+    {
+        RedisTemplate<String, List<Organizer>> template = new RedisTemplate<>();
         StringRedisSerializer stringSerializer = new StringRedisSerializer();
         RedisSerializer<Object> jsonSerializer = RedisSerializer.json();
 

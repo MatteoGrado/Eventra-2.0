@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veranstalter | Eventra-2.0</title>
+    <link rel="stylesheet" th:href="@{/organizer/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <img th:src="@{/images/logo-evntra2-0.png}" class="site-logo" alt="Logo of the Website.">
+    <h1 class="main-header">
+        <a th:href="@{/}">Eventa-2.0</a>
+    </h1>
+    <ol class="link-list">
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/organizer}">Veranstalter</a></li>
+        <li><a href="#">Workshops</a></li>
+        <li><a href="#">Kontakt</a></li>
+    </ol>
+    <button class="login-btn" type="submit">
+        <a th:href="@{/login}">Login</a>
+    </button>
+</nav>
+<main class="organizer-page">
+    <section class="organizer-intro" aria-labelledby="organizer-title">
+        <div class="intro-copy">
+            <span class="eyebrow">Die Menschen hinter den Events</span>
+            <h2 id="organizer-title">Veranstalter entdecken</h2>
+            <p>Von lokalen Initiativen bis zu großen Event-Teams: Lerne die Veranstalter kennen, die Eventra lebendig machen.</p>
+        </div>
+        <div class="intro-mark" aria-hidden="true"><span>✦</span></div>
+    </section>
+
+    <div class="section-heading">
+        <h3>Unsere Veranstalter</h3>
+        <span class="organizer-count" th:text="${organizerList.size()} + ' Profile'">0 Profile</span>
+    </div>
+
+    <div class="organizer-grid" th:if="${!organizerList.isEmpty()}">
+        <article class="organizer-card" th:each="organizer, iteration : ${organizerList}">
+            <div class="card-topline">
+                <span class="card-number" th:text="${#numbers.formatInteger(iteration.count, 2)}">01</span>
+                <span class="organizer-status"><span></span> Aktiv</span>
+            </div>
+            <div class="organizer-avatar" aria-hidden="true"
+                 th:text="${organizer.organizationName != null and !organizer.organizationName.isEmpty() ? #strings.substring(organizer.organizationName, 0, 1).toUpperCase() : '?'}">E</div>
+            <h4 th:text="${organizer.organizationName}">Event Veranstalter</h4>
+            <a class="organizer-contact" th:href="'mailto:' + ${organizer.email}"
+               th:text="${organizer.email}">kontakt@eventra.de</a>
+            <div class="card-footer">
+                <span>Veranstalter</span>
+                <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+        </article>
+    </div>
+
+    <div class="empty-state" th:if="${organizerList.isEmpty()}">
+        <span class="empty-icon" aria-hidden="true">✦</span>
+        <h3>Noch keine Veranstalter</h3>
+        <p>Sobald die ersten Veranstalter dabei sind, findest du sie hier.</p>
+    </div>
+</main>
+</body>
+</html>

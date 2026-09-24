@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.grado</groupId>
-    <artifactId>User-Service</artifactId>
+    <artifactId>Start-Service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>User-Service</name>
     <description>User-Service</description>
