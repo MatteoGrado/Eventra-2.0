@@ -74,4 +74,10 @@ public class DefaultController
     {
         return "contactus";
     }
+
+    @GetMapping("/workshops")
+    public String workshops()
+    {
+        return "workshops";
+    }
 }

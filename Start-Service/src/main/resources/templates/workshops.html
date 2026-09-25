@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workshops | Eventra-2.0</title>
+    <link rel="stylesheet" th:href="@{/workshops/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <img th:src="@{/images/logo-evntra2-0.png}" class="site-logo" alt="Eventra-2.0 Logo">
+    <h1 class="main-header">
+        <a th:href="@{/}">Eventa-2.0</a>
+    </h1>
+    <ol class="link-list">
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/organizer}">Veranstalter</a></li>
+        <li><a th:href="@{/workshops}" aria-current="page">Workshops</a></li>
+        <li><a th:href="@{/contactus}">Kontakt</a></li>
+    </ol>
+    <button class="login-btn" type="button">
+        <a th:href="@{/login}">Login</a>
+    </button>
+</nav>
+
+<main class="workshops-page">
+    <section class="workshops-hero" aria-labelledby="workshops-title">
+        <div class="hero-copy">
+            <span class="eyebrow">Lernen. Ausprobieren. Wachsen.</span>
+            <h2 id="workshops-title">Mach mehr aus deinem Event.</h2>
+            <p>Entdecke Workshops, die Menschen zusammenbringen, neue Ideen entfachen und aus Neugier echte Erlebnisse machen.</p>
+            <a class="hero-action" href="#workshop-angebote">Workshops entdecken <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-shape" aria-hidden="true">
+            <span class="shape-number">01</span>
+            <span class="shape-symbol">✦</span>
+            <span class="shape-label">hands-on<br>experiences</span>
+        </div>
+    </section>
+
+    <section class="workshop-content" id="workshop-angebote" aria-labelledby="offer-title">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow dark-eyebrow">Dein nächster Impuls</span>
+                <h3 id="offer-title">Workshops für offene Köpfe</h3>
+            </div>
+            <p class="section-intro">Ob kreativ, praktisch oder inspirierend: Hier findest du Formate, die du nicht nur besuchst, sondern mitgestaltest.</p>
+        </div>
+
+        <div class="workshop-grid">
+            <article class="workshop-card workshop-card-featured">
+                <div class="card-topline"><span class="card-number">01</span><span class="card-tag">Kreativ</span></div>
+                <div class="card-icon" aria-hidden="true">✦</div>
+                <h4>Ideen zum Leben erwecken</h4>
+                <p>Entwickle aus einem ersten Gedanken ein klares Konzept und bringe deine Idee auf die Bühne.</p>
+                <a href="#kontakt" class="card-link">Mehr erfahren <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <article class="workshop-card">
+                <div class="card-topline"><span class="card-number">02</span><span class="card-tag">Community</span></div>
+                <div class="card-icon card-icon-blue" aria-hidden="true">◎</div>
+                <h4>Gemeinsam besser planen</h4>
+                <p>Lerne Methoden kennen, mit denen aus vielen Perspektiven ein starkes Event-Erlebnis wird.</p>
+                <a href="#kontakt" class="card-link">Mehr erfahren <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <article class="workshop-card">
+                <div class="card-topline"><span class="card-number">03</span><span class="card-tag">Praxis</span></div>
+                <div class="card-icon card-icon-dark" aria-hidden="true">↗</div>
+                <h4>Vom Plan zum Erlebnis</h4>
+                <p>Praktische Tipps, wertvolle Tools und ein Plan, der dich vom ersten Schritt bis zum Event begleitet.</p>
+                <a href="#kontakt" class="card-link">Mehr erfahren <span aria-hidden="true">↗</span></a>
+            </article>
+        </div>
+
+        <section class="workshop-note" id="kontakt" aria-label="Workshop Kontakt">
+            <div class="note-mark" aria-hidden="true">→</div>
+            <div>
+                <span class="eyebrow dark-eyebrow">Du hast einen Workshop im Kopf?</span>
+                <h3>Bring ihn zu Eventra.</h3>
+                <p>Wir freuen uns auf neue Formate, gute Fragen und Menschen, die ihr Wissen teilen möchten.</p>
+            </div>
+            <a class="note-action" href="mailto:kontakt@eventra.de">Kontakt aufnehmen</a>
+        </section>
+    </section>
+</main>
+
+<footer class="footer">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+</footer>
+</body>
+</html>

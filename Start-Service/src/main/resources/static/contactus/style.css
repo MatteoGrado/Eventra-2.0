@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 
-body { min-height: 100vh; margin: 0; background: #f8faf9; font-family: Arial, sans-serif; color: #263936; }
+body { display: flex; min-height: 100vh; flex-direction: column; margin: 0; background: #f8faf9; font-family: Arial, sans-serif; color: #263936; }
 
 .navbar { display: flex; align-items: center; position: relative; width: 100%; min-height: 64px; padding: 10px 24px; background-color: #000; color: #fff; }
 .site-logo { display: block; max-width: 56px; max-height: 44px; object-fit: contain; }
@@ -13,7 +13,7 @@ body { min-height: 100vh; margin: 0; background: #f8faf9; font-family: Arial, sa
 .login-btn a { color: #fff; text-decoration: none; }
 .login-btn:hover { background-color: #0d5fba; border-color: #0d5fba; }
 
-.contact-page { max-width: 1180px; margin: 0 auto; padding: 58px 32px 80px; }
+.contact-page { flex: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 58px 32px 80px; }
 .contact-hero { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 44px 48px; overflow: hidden; border-radius: 24px; background: #263936; color: #fff; box-shadow: 0 16px 32px rgba(38, 57, 54, .14); }
 .contact-hero > div:first-child { max-width: 680px; }
 .eyebrow { display: inline-block; margin-bottom: 14px; color: #ffeb3b; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
@@ -34,7 +34,7 @@ body { min-height: 100vh; margin: 0; background: #f8faf9; font-family: Arial, sa
 .contact-link:hover { text-decoration: underline; }
 .contact-card p { margin: 14px 0 0; color: #61706d; line-height: 1.6; }
 .contact-value { margin-top: 0 !important; }
-.footer { display: flex; align-items: center; justify-content: space-evenly; min-height: 64px; padding: 14px 24px; background: #000; color: #fff; font-size: .9rem; }
+.footer { display: flex; align-items: center; justify-content: space-evenly; width: 100%; min-height: 64px; margin-top: auto; padding: 14px 24px; background-color: #000; color: #fff; font-size: .9rem; }
 .footer a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 850px) { .contact-grid { grid-template-columns: 1fr 1fr; } .contact-card-featured { grid-column: 1 / -1; min-height: 220px; } }
