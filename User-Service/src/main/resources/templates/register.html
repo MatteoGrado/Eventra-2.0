@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/register/style.css}">
+</head>
+<body>
+<main class="register-page">
+    <section class="register-visual" aria-label="Eventra"><a class="brand" th:href="@{http://localhost:8081/}"
+                                                             aria-label="Eventra Startseite"> <span class="brand-mark"
+                                                                                                    aria-hidden="true">✦</span>
+        <span>Eventra</span> </a>
+        <div class="visual-content"><span class="eyebrow">Willkommen bei Eventra</span>
+            <h1>Erlebnisse beginnen mit dir.</h1>
+            <p>Erstelle dein Konto und entdecke Events oder veranstalte deine eigenen Erlebnisse.</p></div>
+        <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+        <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+        <div class="visual-glow" aria-hidden="true"></div>
+    </section>
+    <section class="register-panel">
+        <div class="register-card">
+            <div class="mobile-brand" aria-hidden="true"><span class="brand-mark">✦</span> <span>Eventra</span></div>
+            <div class="register-heading"><span class="eyebrow">Account erstellen</span>
+                <h2>Werde Teil von Eventra.</h2>
+                <p>Erstelle jetzt kostenlos dein Konto.</p></div>
+            <form class="register-form" th:action="@{/register}" th:object="${registerForm}" method="post">
+                <fieldset class="role-selection">
+                    <legend>Wie möchtest du Eventra nutzen?</legend>
+                    <div class="role-options"><label class="role-option"> <input type="radio" th:field="*{role}"
+                                                                                 value="customer" required> <span
+                            class="role-content"> <span class="role-icon" aria-hidden="true">◎</span> <span> <strong>Customer</strong> <small>Events entdecken und teilnehmen</small> </span> </span>
+                    </label> <label class="role-option"> <input type="radio" th:field="*{role}" value="organizer"
+                                                                required> <span class="role-content"> <span
+                            class="role-icon" aria-hidden="true">✦</span> <span> <strong>Organizer</strong> <small>Eigene Events erstellen und verwalten</small> </span> </span>
+                    </label></div>
+                </fieldset>
+                <div id="customer-fields" class="form-row">
+                    <div class="form-field"><label for="firstName">Vorname</label>
+                        <div class="input-wrapper"><span class="input-icon" aria-hidden="true">A</span> <input
+                                id="firstName" type="text" th:field="*{firstName}" autocomplete="given-name"
+                                placeholder="Max"></div>
+                    </div>
+                    <div class="form-field"><label for="lastName">Nachname</label>
+                        <div class="input-wrapper"><span class="input-icon" aria-hidden="true">A</span> <input
+                                id="lastName" type="text" th:field="*{lastName}" autocomplete="family-name"
+                                placeholder="Mustermann"></div>
+                    </div>
+                </div>
+                <div id="organizer-fields" class="form-field" style="display: none;"><label for="organizationName">Organisationsname</label>
+                    <div class="input-wrapper"><span class="input-icon" aria-hidden="true">✦</span> <input
+                            id="organizationName" type="text" th:field="*{organizationName}" autocomplete="organization"
+                            placeholder="Meine Eventagentur"></div>
+                </div>
+                <div class="form-field"><label for="email">E-Mail-Adresse</label>
+                    <div class="input-wrapper"><span class="input-icon" aria-hidden="true">@</span> <input id="email"
+                                                                                                           type="email"
+                                                                                                           th:field="*{email}"
+                                                                                                           autocomplete="email"
+                                                                                                           placeholder="name@beispiel.de"
+                                                                                                           required>
+                    </div>
+                </div>
+                <div class="form-field"><label for="password">Passwort</label>
+                    <div class="input-wrapper"><span class="input-icon" aria-hidden="true">•••</span> <input
+                            id="password" type="password" th:field="*{password}" autocomplete="new-password"
+                            placeholder="Dein Passwort" required></div>
+                </div>
+                <button class="register-button" type="submit"> Konto erstellen <span aria-hidden="true">→</span>
+                </button>
+            </form>
+            <p class="login-hint">Bereits ein Konto? <a th:href="@{/login}">Jetzt anmelden</a></p></div>
+    </section>
+</main>
+<script> const customerFields = document.getElementById("customer-fields");
+const organizerFields = document.getElementById("organizer-fields");
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+const organizationName = document.getElementById("organizationName");
+const roleInputs = document.querySelectorAll('input[name="role"]');
+
+function updateRegistrationFields() {
+    const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+    if (selectedRole === "organizer") {
+        customerFields.style.display = "none";
+        organizerFields.style.display = "block";
+        firstName.required = false;
+        lastName.required = false;
+        organizationName.required = true;
+    } else {
+        customerFields.style.display = "flex";
+        organizerFields.style.display = "none";
+        firstName.required = true;
+        lastName.required = true;
+        organizationName.required = false;
+    }
+}
+
+roleInputs.forEach(input => {
+    input.addEventListener("change", updateRegistrationFields);
+});
+updateRegistrationFields(); </script>
+</body>
+</html>
