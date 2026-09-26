@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anmelden | Eventra</title>
+    <link rel="stylesheet" th:href="@{/login/style.css}">
+</head>
+<body>
+<main class="login-page">
+    <section class="login-visual" aria-label="Eventra">
+        <a class="brand" th:href="@{http://localhost:8081/}" aria-label="Eventra Startseite">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            <span>Eventra</span>
+        </a>
+        <div class="visual-content">
+            <span class="eyebrow">Dein nächstes Erlebnis beginnt hier</span>
+            <h1>Gemeinsam mehr erleben.</h1>
+            <p>Entdecke besondere Events oder bring deine eigenen Ideen auf die Bühne.</p>
+        </div>
+        <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+        <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+        <div class="visual-glow" aria-hidden="true"></div>
+    </section>
+    <section class="login-panel">
+        <div class="login-card">
+            <div class="mobile-brand" aria-hidden="true">
+                <span class="brand-mark">✦</span>
+                <span>Eventra</span>
+            </div>
+            <div class="login-heading">
+                <span class="eyebrow">Willkommen zurück</span>
+                <h2>Schön, dich zu sehen.</h2>
+                <p>Melde dich an, um fortzufahren.</p>
+            </div>
+            <form class="login-form" th:action="@{/login/user}" method="post">
+                <fieldset class="role-selection">
+                    <legend>Ich möchte mich anmelden als</legend>
+                    <div class="role-options">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="visitor" required checked>
+                            <span class="role-content">
+                                <span class="role-icon" aria-hidden="true">◎</span>
+                                <span>
+                                    <strong>Besucher</strong>
+                                    <small>Events entdecken</small>
+                                </span>
+                            </span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="organizer">
+                            <span class="role-content">
+                                <span class="role-icon" aria-hidden="true">✦</span>
+                                <span>
+                                    <strong>Veranstalter</strong>
+                                    <small>Events organisieren</small>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+                <div class="form-field">
+                    <label for="username">Username oder E-Mail</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">@</span>
+                        <input id="username" name="username" type="text" autocomplete="username"
+                               placeholder="name@beispiel.de" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="field-label-row">
+                        <label for="password">Passwort</label>
+                        <a class="forgot-link" href="#password-reset">Passwort vergessen?</a>
+                    </div>
+                    <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">•••</span>
+                        <input id="password" name="password" type="password" autocomplete="current-password"
+                               placeholder="Dein Passwort" required>
+                    </div>
+                </div>
+                <label class="remember-option">
+                    <input type="checkbox" name="remember-me" value="true">
+                    <span class="checkbox-mark" aria-hidden="true"></span>
+                    <span>Angemeldet bleiben</span>
+                </label>
+                <button class="login-button" type="submit">
+                    Anmelden
+                    <span aria-hidden="true">→</span>
+                </button>
+            </form>
+            <p class="register-hint">Noch kein Konto? <a href="#register">Jetzt registrieren</a></p>
+        </div>
+    </section>
+</main>
+</body>
+</html>
