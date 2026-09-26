@@ -1,4 +1,4 @@
-package de.grado.userservice;
+package de.grado.startservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

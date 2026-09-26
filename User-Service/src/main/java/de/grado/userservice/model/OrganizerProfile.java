@@ -13,25 +13,6 @@ public class OrganizerProfile
     private Long id;
 
     private String organizationName;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false, unique = true)
-    private User user;
-
-    protected OrganizerProfile()
-    {
-    }
-
-    public OrganizerProfile(String organizationName)
-    {
-        this.organizationName = organizationName;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-        if (user != null && user.getOrganizerProfile() != this) {
-            user.setOrganizerProfile(this);
-        }
-    }
+    private String email;
+    private String password;
 }

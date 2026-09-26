@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomerProfileRepository extends JpaRepository<CustomerProfile, Long>
 {
+    CustomerProfile findByEmail(String email);
+    boolean existsByEmail(String email);
 }

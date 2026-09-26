@@ -1,4 +1,4 @@
-package de.grado.userservice;
+package de.grado.startservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

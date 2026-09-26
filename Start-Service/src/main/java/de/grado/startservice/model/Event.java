@@ -1,4 +1,4 @@
-package de.grado.userservice.model;
+package de.grado.startservice.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

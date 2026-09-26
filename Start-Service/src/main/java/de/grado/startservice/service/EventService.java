@@ -1,7 +1,7 @@
-package de.grado.userservice.service;
+package de.grado.startservice.service;
 
-import de.grado.userservice.model.Event;
-import de.grado.userservice.repository.EventRepository;
+import de.grado.startservice.model.Event;
+import de.grado.startservice.repository.EventRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

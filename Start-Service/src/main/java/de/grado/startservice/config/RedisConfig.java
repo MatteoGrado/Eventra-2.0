@@ -1,7 +1,7 @@
-package de.grado.userservice.config;
+package de.grado.startservice.config;
 
-import de.grado.userservice.model.Event;
-import de.grado.userservice.model.Organizer;
+import de.grado.startservice.model.Event;
+import de.grado.startservice.model.Organizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

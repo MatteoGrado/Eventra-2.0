@@ -1,10 +1,10 @@
-package de.grado.userservice.controller;
+package de.grado.startservice.controller;
 
-import de.grado.userservice.forms.SearchBarForm;
-import de.grado.userservice.model.Event;
-import de.grado.userservice.service.EventCacheService;
-import de.grado.userservice.service.EventService;
-import de.grado.userservice.service.OrganizerCacheService;
+import de.grado.startservice.forms.SearchBarForm;
+import de.grado.startservice.model.Event;
+import de.grado.startservice.service.EventCacheService;
+import de.grado.startservice.service.EventService;
+import de.grado.startservice.service.OrganizerCacheService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

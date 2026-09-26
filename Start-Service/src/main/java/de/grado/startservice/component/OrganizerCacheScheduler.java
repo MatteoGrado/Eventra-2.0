@@ -1,19 +1,19 @@
-package de.grado.userservice.component;
+package de.grado.startservice.component;
 
-import de.grado.userservice.service.EventCacheService;
+import de.grado.startservice.service.OrganizerCacheService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class EventCacheScheduler
+public class OrganizerCacheScheduler
 {
-    private final EventCacheService eventCacheService;
+    private final OrganizerCacheService organizerCacheService;
 
     @Scheduled(fixedRate = 360000)
     public void refresh()
     {
-        eventCacheService.refreshCache();
+        organizerCacheService.refreshCache();
     }
 }

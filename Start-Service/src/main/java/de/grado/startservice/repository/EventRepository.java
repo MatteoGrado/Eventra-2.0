@@ -1,6 +1,6 @@
-package de.grado.userservice.repository;
+package de.grado.startservice.repository;
 
-import de.grado.userservice.model.Event;
+import de.grado.startservice.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

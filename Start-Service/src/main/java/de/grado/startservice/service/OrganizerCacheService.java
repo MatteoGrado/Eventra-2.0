@@ -1,7 +1,7 @@
-package de.grado.userservice.service;
+package de.grado.startservice.service;
 
-import de.grado.userservice.model.Organizer;
-import de.grado.userservice.repository.OrganizerRepository;
+import de.grado.startservice.model.Organizer;
+import de.grado.startservice.repository.OrganizerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
